@@ -34,28 +34,37 @@
 
 
 // 680. Valid Palindrome II
-// start 10:30
 
 const validPalindrome = s => {
-    reverse = s.split('').reverse().join('');
-    if (reverse === s) {
-        return true;
+    const max = s.length
+    if (max <= 1) {
+        return true
     }
 
-    for (let i = 0; i < s.length; i++) {
-        let x = s.split('').splice(0, i).join('');
-        let y = s.split('').splice(i + 1, s.length).join('');
-        let ori = x + y;
-        let rev = x + y;
-        rev = rev.split('').reverse().join('');
-        if (rev === ori) {
-            return true;
+    // let isDelete = false
+    for (let i = 0, j = max - 1; i <= j;) {
+        const pre = s[i]
+        const suf = s[j]
+
+        if (pre == suf) {
+        i++
+        j--
+        continue
         }
+
+        return isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1)
     }
-    return false
-};
+    return true
+}
 
-console.log(validPalindrome('abagfd'));
-
-
-// end 11:00
+function isPalindrome (s, start, end) {
+    for (let i = start, j = end; i <= j;) {
+        if (s[i] === s[j]) {
+        i++
+        j--
+        continue
+        }
+        return false
+    }
+    return true
+}
