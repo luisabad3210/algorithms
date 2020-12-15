@@ -35,36 +35,56 @@
 
 // 680. Valid Palindrome II
 
-const validPalindrome = s => {
-    const max = s.length
-    if (max <= 1) {
-        return true
-    }
+// const validPalindrome = s => {
+//     const max = s.length
+//     if (max <= 1) {
+//         return true
+//     }
 
-    // let isDelete = false
-    for (let i = 0, j = max - 1; i <= j;) {
-        const pre = s[i]
-        const suf = s[j]
+//     // let isDelete = false
+//     for (let i = 0, j = max - 1; i <= j;) {
+//         const pre = s[i]
+//         const suf = s[j]
 
-        if (pre == suf) {
-        i++
-        j--
-        continue
+//         if (pre == suf) {
+//         i++
+//         j--
+//         continue
+//         }
+
+//         return isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1)
+//     }
+//     return true
+// }
+
+// function isPalindrome (s, start, end) {
+//     for (let i = start, j = end; i <= j;) {
+//         if (s[i] === s[j]) {
+//         i++
+//         j--
+//         continue
+//         }
+//         return false
+//     }
+//     return true
+// }
+
+
+// _________________________________________________
+// 88. Merge Sorted Array
+
+const merge = (nums1, m, nums2, n) => {
+    let tracker = n;
+    let count = 0;
+
+    for (let i = 0; i < nums1.length; i++) {
+        if (i + 1 > m && tracker > 0) {
+            nums1[i] = nums2[count]
+            count++;
+            tracker--;
         }
-
-        return isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1)
     }
-    return true
-}
+    return nums1.sort((a, b) => a - b)
+};
 
-function isPalindrome (s, start, end) {
-    for (let i = start, j = end; i <= j;) {
-        if (s[i] === s[j]) {
-        i++
-        j--
-        continue
-        }
-        return false
-    }
-    return true
-}
+console.log(merge([1,2,3,0,0,0], 3, [2,5,6], 3));
