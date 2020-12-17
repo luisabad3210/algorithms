@@ -73,18 +73,43 @@
 // _________________________________________________
 // 88. Merge Sorted Array
 
-const merge = (nums1, m, nums2, n) => {
-    let tracker = n;
-    let count = 0;
+// const merge = (nums1, m, nums2, n) => {
+//     let tracker = n;
+//     let count = 0;
 
-    for (let i = 0; i < nums1.length; i++) {
-        if (i + 1 > m && tracker > 0) {
-            nums1[i] = nums2[count]
-            count++;
-            tracker--;
+//     for (let i = 0; i < nums1.length; i++) {
+//         if (i + 1 > m && tracker > 0) {
+//             nums1[i] = nums2[count]
+//             count++;
+//             tracker--;
+//         }
+//     }
+//     return nums1.sort((a, b) => a - b)
+// };
+
+// console.log(merge([1,2,3,0,0,0], 3, [2,5,6], 3));
+
+
+// _________________________________________________
+// 824. Goat Latin
+
+const toGoatLatin = s => {
+
+    s = s.split(' ');
+    let vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+    let result = []
+    let x = 'a'
+    for (let i = 0; i < s.length; i++) {
+        let first = s[i][0]
+        if (vowels.includes(first)) {
+            result.push(s[i] + 'ma' + x)
+        } else {
+            let word = s[i].slice(1)
+            result.push(word + first + 'ma' + x)
         }
+        x += 'a'
     }
-    return nums1.sort((a, b) => a - b)
+    return result.join(' ')
 };
 
-console.log(merge([1,2,3,0,0,0], 3, [2,5,6], 3));
+console.log(toGoatLatin("The quick brown fox jumped over the lazy dog"))
