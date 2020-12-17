@@ -93,23 +93,50 @@
 // _________________________________________________
 // 824. Goat Latin
 
-const toGoatLatin = s => {
+// const toGoatLatin = s => {
 
-    s = s.split(' ');
-    let vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
-    let result = []
-    let x = 'a'
-    for (let i = 0; i < s.length; i++) {
-        let first = s[i][0]
-        if (vowels.includes(first)) {
-            result.push(s[i] + 'ma' + x)
-        } else {
-            let word = s[i].slice(1)
-            result.push(word + first + 'ma' + x)
-        }
-        x += 'a'
+//     s = s.split(' ');
+//     let vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+//     let result = []
+//     let x = 'a'
+//     for (let i = 0; i < s.length; i++) {
+//         let first = s[i][0]
+//         if (vowels.includes(first)) {
+//             result.push(s[i] + 'ma' + x)
+//         } else {
+//             let word = s[i].slice(1)
+//             result.push(word + first + 'ma' + x)
+//         }
+//         x += 'a'
+//     }
+//     return result.join(' ')
+// };
+
+// console.log(toGoatLatin("The quick brown fox jumped over the lazy dog"))
+
+
+
+// _________________________________________________
+// 1200. Minimum Absolute Difference
+
+const minimumAbsDifference = arr => {
+    let array = arr.sort((a,b) => {return b - a})
+
+    let difference = []
+
+    for ( let i = 0; i < array.length - 1; i++ ) {
+        difference.push(array[i] - array[i + 1])
     }
-    return result.join(' ')
+    let min = Math.min.apply(Math, difference)
+
+    let result = []
+
+    for (let i = 0; i < array.length - 1; i++) {
+        if (array[i] - array[i + 1] === min) {
+            result.push(([array[i], array[i + 1]]).reverse())
+        }
+    }
+    return result.reverse()
 };
 
-console.log(toGoatLatin("The quick brown fox jumped over the lazy dog"))
+console.log(minimumAbsDifference([3,8,-10,23,19,-4,-14,27]))
