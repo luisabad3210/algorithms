@@ -119,24 +119,50 @@
 // _________________________________________________
 // 1200. Minimum Absolute Difference
 
-const minimumAbsDifference = arr => {
-    let array = arr.sort((a,b) => {return b - a})
+// const minimumAbsDifference = arr => {
+//     let array = arr.sort((a,b) => {return b - a})
 
-    let difference = []
+//     let difference = []
 
-    for ( let i = 0; i < array.length - 1; i++ ) {
-        difference.push(array[i] - array[i + 1])
-    }
-    let min = Math.min.apply(Math, difference)
+//     for ( let i = 0; i < array.length - 1; i++ ) {
+//         difference.push(array[i] - array[i + 1])
+//     }
+//     let min = Math.min.apply(Math, difference)
+
+//     let result = []
+
+//     for (let i = 0; i < array.length - 1; i++) {
+//         if (array[i] - array[i + 1] === min) {
+//             result.push(([array[i], array[i + 1]]).reverse())
+//         }
+//     }
+//     return result.reverse()
+// };
+
+// console.log(minimumAbsDifference([3,8,-10,23,19,-4,-14,27]))
+
+
+// _________________________________________________
+// 929. Unique Email Addresses
+
+const numUniqueEmails = emails => {
 
     let result = []
 
-    for (let i = 0; i < array.length - 1; i++) {
-        if (array[i] - array[i + 1] === min) {
-            result.push(([array[i], array[i + 1]]).reverse())
+    for (let i = 0; i < emails.length; i++) {
+        let domain = emails[i].slice(emails[i].indexOf('@'))
+        let local = emails[i].slice(0, emails[i].indexOf('@')).split('').filter((x)=>{return x !== '.'});
+
+        
+        if (local.includes('+')) {
+            local = local.slice(0, local.indexOf('+')).join('')
+            !result.includes(local + domain) ? result.push(local + domain) : null
+        } else {
+            !result.includes(local.join('') + domain) ? result.push(local.join('') + domain) : null
         }
+
     }
-    return result.reverse()
+    return result.length
 };
 
-console.log(minimumAbsDifference([3,8,-10,23,19,-4,-14,27]))
+console.log(numUniqueEmails(["test.email+alex@leetcode.com", "test.email@leetcode.com"]))
