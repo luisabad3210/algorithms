@@ -145,24 +145,45 @@
 // _________________________________________________
 // 929. Unique Email Addresses
 
-const numUniqueEmails = emails => {
+// const numUniqueEmails = emails => {
 
-    let result = []
+//     let result = []
 
-    for (let i = 0; i < emails.length; i++) {
-        let domain = emails[i].slice(emails[i].indexOf('@'))
-        let local = emails[i].slice(0, emails[i].indexOf('@')).split('').filter((x)=>{return x !== '.'});
+//     for (let i = 0; i < emails.length; i++) {
+//         let domain = emails[i].slice(emails[i].indexOf('@'))
+//         let local = emails[i].slice(0, emails[i].indexOf('@')).split('').filter((x)=>{return x !== '.'});
 
         
-        if (local.includes('+')) {
-            local = local.slice(0, local.indexOf('+')).join('')
-            !result.includes(local + domain) ? result.push(local + domain) : null
-        } else {
-            !result.includes(local.join('') + domain) ? result.push(local.join('') + domain) : null
+//         if (local.includes('+')) {
+//             local = local.slice(0, local.indexOf('+')).join('')
+//             !result.includes(local + domain) ? result.push(local + domain) : null
+//         } else {
+//             !result.includes(local.join('') + domain) ? result.push(local.join('') + domain) : null
+//         }
+
+//     }
+//     return result.length
+// };
+
+// console.log(numUniqueEmails(["test.email+alex@leetcode.com", "test.email@leetcode.com"]))
+
+
+// _________________________________________________
+// 14. Longest Common Prefix
+
+
+function longestCommonPrefix(strs) {
+    if (!strs.length) return '';
+    
+    for (let i = 0; i < strs[0].length; i++) {
+        for (let str of strs) {
+            if (str[i] !== strs[0][i]) {
+                return str.slice(0, i);
+            }
         }
-
     }
-    return result.length
-};
+    
+    return strs[0];
+}
 
-console.log(numUniqueEmails(["test.email+alex@leetcode.com", "test.email@leetcode.com"]))
+console.log(longestCommonPrefix(["flower","flow","flight"]))
