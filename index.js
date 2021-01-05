@@ -172,18 +172,36 @@
 // 14. Longest Common Prefix
 
 
-function longestCommonPrefix(strs) {
-    if (!strs.length) return '';
+// function longestCommonPrefix(strs) {
+//     if (!strs.length) return '';
     
-    for (let i = 0; i < strs[0].length; i++) {
-        for (let str of strs) {
-            if (str[i] !== strs[0][i]) {
-                return str.slice(0, i);
-            }
-        }
-    }
+//     for (let i = 0; i < strs[0].length; i++) {
+//         for (let str of strs) {
+//             if (str[i] !== strs[0][i]) {
+//                 return str.slice(0, i);
+//             }
+//         }
+//     }
     
-    return strs[0];
-}
+//     return strs[0];
+// }
 
-console.log(longestCommonPrefix(["flower","flow","flight"]))
+// console.log(longestCommonPrefix(["flower","flow","flight"]))
+
+
+// _________________________________________________
+// 14. Longest Common Prefix
+
+
+const moveZeroes = nums => {
+    let checked = 0;
+    for(let i=0;i<nums.length;i++){
+        if(nums[i]===0){
+            nums.splice(i,1);
+            i--;
+            nums.push(0)
+        }
+        checked++;
+        if(checked === nums.length) break;
+    };
+};
