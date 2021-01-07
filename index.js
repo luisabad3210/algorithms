@@ -209,18 +209,48 @@
 // _________________________________________________
 // 163. Missing Ranges
 
-const findMissingRanges = (nums, lower, upper) => {
-    nums = [lower - 1 , ...nums, upper + 1];
-    let output = [];
+// const findMissingRanges = (nums, lower, upper) => {
+//     nums = [lower - 1 , ...nums, upper + 1];
+//     let output = [];
 
-    for (let i = 1; i < nums.length; i++) {
-        if (nums[i] - nums[i - 1] === 2) {
-            output.push((nums[i - 1] + 1).toString())
-        } else if (nums[i] - nums[i - 1] > 2) {
-            output.push(((nums[i - 1] + 1) + '->' + (nums[i] - 1)).toString())
+//     for (let i = 1; i < nums.length; i++) {
+//         if (nums[i] - nums[i - 1] === 2) {
+//             output.push((nums[i - 1] + 1).toString())
+//         } else if (nums[i] - nums[i - 1] > 2) {
+//             output.push(((nums[i - 1] + 1) + '->' + (nums[i] - 1)).toString())
+//         }
+//     }
+//     return output
+// };
+
+// console.log(findMissingRanges([], 1, 1)) 
+
+
+// _________________________________________________
+// 463. Island Perimeter
+
+const islandPerimeter = (grid) => {
+    if (grid.length === 0 || grid[0].length == 0){
+    return 0
+    }
+
+    let perimeter = 0
+    
+    for (i = 0; i < grid.length; i++){
+        for (j = 0; j < grid[0].length; j++){
+            if (grid[i][j] === 1){
+                perimeter += 4
+                
+                if (i > 0 && grid[i-1][j] === 1){
+                    perimeter -=2
+                }
+                if (j > 0 && grid[i][j-1] === 1){
+                    perimeter -=2
+                }
+            }
         }
     }
-    return output
-};
+    return perimeter
+    };
 
-console.log(findMissingRanges([], 1, 1)) 
+console.log(islandPerimeter([[1, 1]]))
