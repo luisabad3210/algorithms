@@ -193,15 +193,34 @@
 // 14. Longest Common Prefix
 
 
-const moveZeroes = nums => {
-    let checked = 0;
-    for(let i=0;i<nums.length;i++){
-        if(nums[i]===0){
-            nums.splice(i,1);
-            i--;
-            nums.push(0)
+// const moveZeroes = nums => {
+//     let checked = 0;
+//     for(let i=0;i<nums.length;i++){
+//         if(nums[i]===0){
+//             nums.splice(i,1);
+//             i--;
+//             nums.push(0)
+//         }
+//         checked++;
+//         if(checked === nums.length) break;
+//     };
+// };
+
+// _________________________________________________
+// 163. Missing Ranges
+
+const findMissingRanges = (nums, lower, upper) => {
+    nums = [lower - 1 , ...nums, upper + 1];
+    let output = [];
+
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] - nums[i - 1] === 2) {
+            output.push((nums[i - 1] + 1).toString())
+        } else if (nums[i] - nums[i - 1] > 2) {
+            output.push(((nums[i - 1] + 1) + '->' + (nums[i] - 1)).toString())
         }
-        checked++;
-        if(checked === nums.length) break;
-    };
+    }
+    return output
 };
+
+console.log(findMissingRanges([], 1, 1)) 
