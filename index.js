@@ -229,28 +229,67 @@
 // _________________________________________________
 // 463. Island Perimeter
 
-const islandPerimeter = (grid) => {
-    if (grid.length === 0 || grid[0].length == 0){
-    return 0
-    }
+// const islandPerimeter = (grid) => {
+//     if (grid.length === 0 || grid[0].length == 0){
+//     return 0
+//     }
 
-    let perimeter = 0
+//     let perimeter = 0
     
-    for (i = 0; i < grid.length; i++){
-        for (j = 0; j < grid[0].length; j++){
-            if (grid[i][j] === 1){
-                perimeter += 4
+//     for (i = 0; i < grid.length; i++){
+//         for (j = 0; j < grid[0].length; j++){
+//             if (grid[i][j] === 1){
+//                 perimeter += 4
                 
-                if (i > 0 && grid[i-1][j] === 1){
-                    perimeter -=2
-                }
-                if (j > 0 && grid[i][j-1] === 1){
-                    perimeter -=2
-                }
-            }
-        }
-    }
-    return perimeter
-    };
+//                 if (i > 0 && grid[i-1][j] === 1){
+//                     perimeter -=2
+//                 }
+//                 if (j > 0 && grid[i][j-1] === 1){
+//                     perimeter -=2
+//                 }
+//             }
+//         }
+//     }
+//     return perimeter
+//     };
 
-console.log(islandPerimeter([[1, 1]]))
+// console.log(islandPerimeter([[1, 1]]))
+
+
+// _________________________________________________
+// 1694. Reformat Phone Number
+
+
+const reformatNumber = number => {
+    number = number.split('').filter((x) => x !== ' ' && x !== '-').join('');
+
+    if (number.length <= 3) {
+        return number
+    }
+
+    let num = [];
+
+    for (let i = 0; i < number.length; i = i + 3) {
+        let x = '';
+        if (number[i] !== undefined) {
+            x += number[i]
+        } 
+        if (number[i + 1] !== undefined) {
+            x += number[i + 1]
+        } 
+        if (number[i + 2] !== undefined) {
+            x += number[i + 2]
+        }
+        num.push(x);
+    }
+
+    if (num[num.length - 1].length === 1) {
+        let y = num[num.length - 2].slice(0, 2) + '-' + num[num.length - 2].slice(2) + num[num.length - 1]
+        let a = num.slice(0, num.length - 2).concat(y)
+        num = a
+    }
+
+    return num.join('-')
+};
+
+console.log(reformatNumber("--17-5 229 35-39475 "));
