@@ -260,36 +260,48 @@
 // 1694. Reformat Phone Number
 
 
-const reformatNumber = number => {
-    number = number.split('').filter((x) => x !== ' ' && x !== '-').join('');
+// const reformatNumber = number => {
+//     number = number.split('').filter((x) => x !== ' ' && x !== '-').join('');
 
-    if (number.length <= 3) {
-        return number
-    }
+//     if (number.length <= 3) {
+//         return number
+//     }
 
-    let num = [];
+//     let num = [];
 
-    for (let i = 0; i < number.length; i = i + 3) {
-        let x = '';
-        if (number[i] !== undefined) {
-            x += number[i]
-        } 
-        if (number[i + 1] !== undefined) {
-            x += number[i + 1]
-        } 
-        if (number[i + 2] !== undefined) {
-            x += number[i + 2]
-        }
-        num.push(x);
-    }
+//     for (let i = 0; i < number.length; i = i + 3) {
+//         let x = '';
+//         if (number[i] !== undefined) {
+//             x += number[i]
+//         } 
+//         if (number[i + 1] !== undefined) {
+//             x += number[i + 1]
+//         } 
+//         if (number[i + 2] !== undefined) {
+//             x += number[i + 2]
+//         }
+//         num.push(x);
+//     }
 
-    if (num[num.length - 1].length === 1) {
-        let y = num[num.length - 2].slice(0, 2) + '-' + num[num.length - 2].slice(2) + num[num.length - 1]
-        let a = num.slice(0, num.length - 2).concat(y)
-        num = a
-    }
+//     if (num[num.length - 1].length === 1) {
+//         let y = num[num.length - 2].slice(0, 2) + '-' + num[num.length - 2].slice(2) + num[num.length - 1]
+//         let a = num.slice(0, num.length - 2).concat(y)
+//         num = a
+//     }
 
-    return num.join('-')
+//     return num.join('-')
+// };
+
+// console.log(reformatNumber("--17-5 229 35-39475 "));
+
+
+// _________________________________________________
+// 509. Fibonacci Number
+
+const fib = n => {
+    if(n == 0) {return 0;}
+    if(n == 1) {return 1;}
+    return fib(n - 1) + fib(n - 2)
 };
 
-console.log(reformatNumber("--17-5 229 35-39475 "));
+console.log(fib(2))
