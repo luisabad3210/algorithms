@@ -298,10 +298,56 @@
 // _________________________________________________
 // 509. Fibonacci Number
 
-const fib = n => {
-    if(n == 0) {return 0;}
-    if(n == 1) {return 1;}
-    return fib(n - 1) + fib(n - 2)
+// const fib = n => {
+//     if(n == 0) {return 0;}
+//     if(n == 1) {return 1;}
+//     return fib(n - 1) + fib(n - 2)
+// };
+
+// console.log(fib(2))
+
+
+// _________________________________________________
+// 1133. Largest Unique Number ]
+
+// const largestUniqueNumber = a => {
+//     a = a.sort((a, b) => {return a - b}).reverse()
+//     // return a 
+//     let largest = 0
+//     for (let i = 0; i < a.length; i++) {
+//         for (let y = 1; y < a.length; y++) {
+//             if (a[i] !== a[y]) {
+//                 largest < a[i] ? largest += a[i] : null
+//             }
+//         }
+//     }
+//     return largest
+// };
+
+// console.log(largestUniqueNumber([5,7,3,9,4,9,8,3,1]))
+
+
+// _________________________________________________
+// 412. Fizz Buzz
+
+
+const fizzBuzz = n => {
+    let x = []
+    for (let i = 1; i <= n; i++) {
+        if (i % 3 === 0 && i % 5 === 0) {
+            x.push('FizzBuzz')
+        }
+        else if (i % 3 === 0) {
+            x.push('Fizz')
+        }
+        else if (i % 5 === 0) {
+            x.push('Buzz')
+        }
+        else {
+            x.push(i.toString())
+        }
+    }
+    return x
 };
 
-console.log(fib(2))
+console.log(fizzBuzz(15))
