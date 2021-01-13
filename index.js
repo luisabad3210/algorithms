@@ -356,30 +356,50 @@
 // _________________________________________________
 // 1086. High Five
 
-const highFive = items => {
-    let studentObj = {}
-    let averages = []
+// const highFive = items => {
+//     let studentObj = {}
+//     let averages = []
 
-    items.forEach(score => {
-        if (studentObj.hasOwnProperty(score[0])) {
-            studentObj[score[0]].push(score[1])
-        }
-        else {
-            studentObj[score[0]] = [score[1]]
-        }
-    })        
-    Object.entries(studentObj).forEach(student => {
-        let sum = 0
-        student[1].sort((a, b) => b - a)
+//     items.forEach(score => {
+//         if (studentObj.hasOwnProperty(score[0])) {
+//             studentObj[score[0]].push(score[1])
+//         }
+//         else {
+//             studentObj[score[0]] = [score[1]]
+//         }
+//     })        
+//     Object.entries(studentObj).forEach(student => {
+//         let sum = 0
+//         student[1].sort((a, b) => b - a)
         
-        for (let i = 0; i <= 4; i++) {
-            sum += student[1][i]
-        }
+//         for (let i = 0; i <= 4; i++) {
+//             sum += student[1][i]
+//         }
         
-        averages.push([parseInt(student[0]), Math.floor(sum/5)])
-    })
+//         averages.push([parseInt(student[0]), Math.floor(sum/5)])
+//     })
     
-    return averages
+//     return averages
+// };
+
+// console.log(highFive([[1,100],[7,100],[1,100],[7,100],[1,100],[7,100],[1,100],[7,100],[1,100],[7,100]]))
+
+
+// _________________________________________________
+// 1119. Remove Vowels from a String
+
+
+const removeVowels = s => {
+    let vowels = ['a', 'e', 'i', 'o', 'u']
+
+    let result = ''
+
+    for (let i = 0; i < s.length; i++) {
+        if (!vowels.includes(s[i])) {
+            result += s[i]
+        }
+    }
+    return result
 };
 
-console.log(highFive([[1,100],[7,100],[1,100],[7,100],[1,100],[7,100],[1,100],[7,100],[1,100],[7,100]]))
+console.log(removeVowels("leetcodeisacommunityforcoders"))
