@@ -388,18 +388,26 @@
 // _________________________________________________
 // 1119. Remove Vowels from a String
 
+// const removeVowels = s => {
+//     let vowels = ['a', 'e', 'i', 'o', 'u']
 
-const removeVowels = s => {
-    let vowels = ['a', 'e', 'i', 'o', 'u']
+//     let result = ''
 
-    let result = ''
+//     for (let i = 0; i < s.length; i++) {
+//         if (!vowels.includes(s[i])) {
+//             result += s[i]
+//         }
+//     }
+//     return result
+// };
 
-    for (let i = 0; i < s.length; i++) {
-        if (!vowels.includes(s[i])) {
-            result += s[i]
-        }
-    }
-    return result
-};
+// console.log(removeVowels("leetcodeisacommunityforcoders"))
 
-console.log(removeVowels("leetcodeisacommunityforcoders"))
+
+// _________________________________________________
+// 1108. Defanging an IP Address
+
+const defangIPaddr = address => address.split('.').join('[.]')
+
+
+console.log(defangIPaddr("255.100.50.0"))
