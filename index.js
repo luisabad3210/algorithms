@@ -415,21 +415,40 @@
 // _________________________________________________
 // 1678. Goal Parser Interpretation
 
-const interpret = command => {
+// const interpret = command => {
 
-    let result = ''
+//     let result = ''
     
-    for (let i = 0; i < command.length; i++) {
-        if (command[i] === "G") {
-            result += "G"
-        } else if (command[i] === "(" && command[i + 1] === ")" ) {
-            result += 'o'
-        } else if (command[i] === "a" && command[i + 1] === "l" ) {
-            result += 'al'
-        }
+//     for (let i = 0; i < command.length; i++) {
+//         if (command[i] === "G") {
+//             result += "G"
+//         } else if (command[i] === "(" && command[i + 1] === ")" ) {
+//             result += 'o'
+//         } else if (command[i] === "a" && command[i + 1] === "l" ) {
+//             result += 'al'
+//         }
+//     }
+
+//     return result
+// };
+
+// console.log(interpret("G()()()()(al)"));
+
+
+// _________________________________________________
+// 1165. Single-Row Keyboard
+
+const calculateTime = (keyboard, word) => {
+    
+    let time = 0;
+    let prevPos = 0;
+    
+    for(let i = 0; i < word.length; i++){
+            const current = keyboard.indexOf(word[i]);
+            time = time + Math.abs( current - prevPos);
+            prevPos = current;
     }
+    return time;
+};  
 
-    return result
-};
-
-console.log(interpret("G()()()()(al)"));
+console.log(calculateTime("pqrstuvwxyzabcdefghijklmno", "leetcode"));
