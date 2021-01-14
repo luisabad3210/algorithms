@@ -407,7 +407,29 @@
 // _________________________________________________
 // 1108. Defanging an IP Address
 
-const defangIPaddr = address => address.split('.').join('[.]')
+// const defangIPaddr = address => address.split('.').join('[.]')
+
+// console.log(defangIPaddr("255.100.50.0"))
 
 
-console.log(defangIPaddr("255.100.50.0"))
+// _________________________________________________
+// 1678. Goal Parser Interpretation
+
+const interpret = command => {
+
+    let result = ''
+    
+    for (let i = 0; i < command.length; i++) {
+        if (command[i] === "G") {
+            result += "G"
+        } else if (command[i] === "(" && command[i + 1] === ")" ) {
+            result += 'o'
+        } else if (command[i] === "a" && command[i + 1] === "l" ) {
+            result += 'al'
+        }
+    }
+
+    return result
+};
+
+console.log(interpret("G()()()()(al)"));
