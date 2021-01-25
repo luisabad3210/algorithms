@@ -457,21 +457,38 @@
 // _________________________________________________
 // 1684. Count the Number of Consistent Strings
 
-const countConsistentStrings = (allowed, words) => {
-    allowed = allowed.split('')
-    let count = 0
-    for (let i = 0; i < words.length; i++) {   
-        let letterCounter = 0
-        for (let j = 0; j < words[i].length; j++) {
-            if (allowed.includes(words[i][j])) {
-                letterCounter++
-            }
-        }
-        if (words[i].length === letterCounter) {
-            count++
+// const countConsistentStrings = (allowed, words) => {
+//     allowed = allowed.split('')
+//     let count = 0
+//     for (let i = 0; i < words.length; i++) {   
+//         let letterCounter = 0
+//         for (let j = 0; j < words[i].length; j++) {
+//             if (allowed.includes(words[i][j])) {
+//                 letterCounter++
+//             }
+//         }
+//         if (words[i].length === letterCounter) {
+//             count++
+//         }
+//     }
+//     return count
+// };
+
+// console.log(countConsistentStrings("cad", ["cc","acd","b","ba","bac","bad","ac","d"]))
+
+
+// _________________________________________________
+// 1064. Fixed Point
+
+
+const fixedPoint = arr => {
+    
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === i) {
+            return arr[i]
         }
     }
-    return count
+    return -1
 };
 
-console.log(countConsistentStrings("cad", ["cc","acd","b","ba","bac","bad","ac","d"]))
+console.log(fixedPoint([-10,-5,3,4,7,9]))
