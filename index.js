@@ -438,17 +438,40 @@
 // _________________________________________________
 // 1165. Single-Row Keyboard
 
-const calculateTime = (keyboard, word) => {
+// const calculateTime = (keyboard, word) => {
     
-    let time = 0;
-    let prevPos = 0;
-    
-    for(let i = 0; i < word.length; i++){
-            const current = keyboard.indexOf(word[i]);
-            time = time + Math.abs( current - prevPos);
-            prevPos = current;
-    }
-    return time;
-};  
+//     let time = 0;
+//     let prevPos = 0;
 
-console.log(calculateTime("pqrstuvwxyzabcdefghijklmno", "leetcode"));
+//     for(let i = 0; i < word.length; i++){
+//             const current = keyboard.indexOf(word[i]);
+//             time = time + Math.abs( current - prevPos);
+//             prevPos = current;
+//     }
+//     return time;
+// };  
+
+// console.log(calculateTime("pqrstuvwxyzabcdefghijklmno", "leetcode"));
+
+
+// _________________________________________________
+// 1684. Count the Number of Consistent Strings
+
+const countConsistentStrings = (allowed, words) => {
+    allowed = allowed.split('')
+    let count = 0
+    for (let i = 0; i < words.length; i++) {   
+        let letterCounter = 0
+        for (let j = 0; j < words[i].length; j++) {
+            if (allowed.includes(words[i][j])) {
+                letterCounter++
+            }
+        }
+        if (words[i].length === letterCounter) {
+            count++
+        }
+    }
+    return count
+};
+
+console.log(countConsistentStrings("cad", ["cc","acd","b","ba","bac","bad","ac","d"]))
