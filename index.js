@@ -481,14 +481,22 @@
 // 1064. Fixed Point
 
 
-const fixedPoint = arr => {
+// const fixedPoint = arr => {
     
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] === i) {
-            return arr[i]
-        }
-    }
-    return -1
-};
+//     for (let i = 0; i < arr.length; i++) {
+//         if (arr[i] === i) {
+//             return arr[i]
+//         }
+//     }
+//     return -1
+// };
 
-console.log(fixedPoint([-10,-5,3,4,7,9]))
+// console.log(fixedPoint([-10,-5,3,4,7,9]))
+
+
+// _________________________________________________
+// 709. To Lower Case
+
+const toLowerCase = str => {return str.toLowerCase()}
+
+console.log(toLowerCase('LuiS'))
