@@ -497,6 +497,23 @@
 // _________________________________________________
 // 709. To Lower Case
 
-const toLowerCase = str => {return str.toLowerCase()}
+// const toLowerCase = str => {return str.toLowerCase()}
 
-console.log(toLowerCase('LuiS'))
+// console.log(toLowerCase('LuiS'))
+
+
+// _________________________________________________
+// Two Sum
+
+const twoSum = (nums, target) => {
+    
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = 1; j < nums.length; j++) {
+            if (i !== j && nums[i] + nums[j] === target) {
+                return [i, j]
+            }
+        }
+    }
+};
+
+console.log(twoSum([2,5,5,11], 10))
