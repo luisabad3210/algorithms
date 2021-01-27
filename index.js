@@ -505,15 +505,36 @@
 // _________________________________________________
 // Two Sum
 
-const twoSum = (nums, target) => {
+// const twoSum = (nums, target) => {
     
-    for (let i = 0; i < nums.length; i++) {
-        for (let j = 1; j < nums.length; j++) {
-            if (i !== j && nums[i] + nums[j] === target) {
-                return [i, j]
-            }
+//     for (let i = 0; i < nums.length; i++) {
+//         for (let j = 1; j < nums.length; j++) {
+//             if (i !== j && nums[i] + nums[j] === target) {
+//                 return [i, j]
+//             }
+//         }
+//     }
+// };
+
+// console.log(twoSum([2,5,5,11], 10))
+
+
+// _________________________________________________
+// 26. Remove Duplicates from Sorted Array
+
+const removeDuplicates = nums => {
+    const len = nums.length;
+    for (i = 0; i < len - 1; i++) {
+        if(i > nums.length - 1) {
+        break;
+        }
+        if (nums[i] === nums[i + 1]) {
+        nums.splice(i, 1);
+        i--;
         }
     }
+    
+    return nums.length;
 };
 
-console.log(twoSum([2,5,5,11], 10))
+console.log(removeDuplicates([1,1,2]))
