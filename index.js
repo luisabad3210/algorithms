@@ -559,19 +559,39 @@
 // _________________________________________________
 // How Many Numbers Are Smaller Than the Current Number
 
-const smallerNumbersThanCurrent = nums => {
+// const smallerNumbersThanCurrent = nums => {
+//     let result = []
+//     for (let i = 0; i < nums.length; i++) {
+//         let current = nums[i]
+//         let counter = 0
+//         for (let j = 0; j < nums.length; j++) {
+//             if (i !== j && current > nums[j]) {
+//                 counter++
+//             }
+//         }
+//         result.push(counter)
+//     }
+//     return result
+// };
+
+// console.log(smallerNumbersThanCurrent([6,5,4,8]))
+
+
+// _________________________________________________
+// 1480. Running Sum of 1d Array
+
+const runningSum = nums => {
     let result = []
-    for (let i = 0; i < nums.length; i++) {
-        let current = nums[i]
-        let counter = 0
-        for (let j = 0; j < nums.length; j++) {
-            if (i !== j && current > nums[j]) {
-                counter++
-            }
+    for (let i = 1; i < nums.length + 1; i++) {
+        let x = nums.slice(0, i)
+        let sum = 0
+        for (let j = 0; j < x.length; j++) {
+            sum += x[j]
         }
-        result.push(counter)
+        result.push(sum)
     }
+
     return result
 };
 
-console.log(smallerNumbersThanCurrent([6,5,4,8]))
+console.log(runningSum([3,1,2,10,1]))
