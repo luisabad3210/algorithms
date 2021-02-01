@@ -543,14 +543,35 @@
 // _________________________________________________
 // 27. Remove Element
 
-var removeElement = function(nums, val) {
-    let i = 0;
+// var removeElement = function(nums, val) {
+//     let i = 0;
 
-    while (i < nums.length) {
-        nums[i] === val ? nums.splice(i, 1) : i++;
+//     while (i < nums.length) {
+//         nums[i] === val ? nums.splice(i, 1) : i++;
+//     }
+
+//     return nums.length;
+// };
+
+// console.log(removeElement([0,1,2,2,3,0,4,2], 2))
+
+
+// _________________________________________________
+// How Many Numbers Are Smaller Than the Current Number
+
+const smallerNumbersThanCurrent = nums => {
+    let result = []
+    for (let i = 0; i < nums.length; i++) {
+        let current = nums[i]
+        let counter = 0
+        for (let j = 0; j < nums.length; j++) {
+            if (i !== j && current > nums[j]) {
+                counter++
+            }
+        }
+        result.push(counter)
     }
-
-    return nums.length;
+    return result
 };
 
-console.log(removeElement([0,1,2,2,3,0,4,2], 2))
+console.log(smallerNumbersThanCurrent([6,5,4,8]))
