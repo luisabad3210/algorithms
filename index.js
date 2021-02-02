@@ -580,18 +580,37 @@
 // _________________________________________________
 // 1480. Running Sum of 1d Array
 
-const runningSum = nums => {
-    let result = []
-    for (let i = 1; i < nums.length + 1; i++) {
-        let x = nums.slice(0, i)
-        let sum = 0
-        for (let j = 0; j < x.length; j++) {
-            sum += x[j]
-        }
-        result.push(sum)
-    }
+// const runningSum = nums => {
+//     let result = []
+//     for (let i = 1; i < nums.length + 1; i++) {
+//         let x = nums.slice(0, i)
+//         let sum = 0
+//         for (let j = 0; j < x.length; j++) {
+//             sum += x[j]
+//         }
+//         result.push(sum)
+//     }
 
-    return result
+//     return result
+// };
+
+// console.log(runningSum([3,1,2,10,1]))
+
+// _________________________________________________
+// 27. Remove Element
+
+const removeElement = (nums, val) => {
+    const len = nums.length;
+    for(i = 0; i < len; i++) {
+        if(i > nums.length - 1) {
+        break;
+        }
+        if (nums[i] === val) {
+        nums.splice(i, 1);
+        i--;
+        }
+    }
+    return nums.length;
 };
 
-console.log(runningSum([3,1,2,10,1]))
+console.log(removeElement([3,2,2,3], 3))
