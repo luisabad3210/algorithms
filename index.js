@@ -599,18 +599,42 @@
 // _________________________________________________
 // 27. Remove Element
 
-const removeElement = (nums, val) => {
-    const len = nums.length;
-    for(i = 0; i < len; i++) {
-        if(i > nums.length - 1) {
-        break;
-        }
-        if (nums[i] === val) {
-        nums.splice(i, 1);
-        i--;
+// const removeElement = (nums, val) => {
+//     const len = nums.length;
+//     for(i = 0; i < len; i++) {
+//         if(i > nums.length - 1) {
+//         break;
+//         }
+//         if (nums[i] === val) {
+//         nums.splice(i, 1);
+//         i--;
+//         }
+//     }
+//     return nums.length;
+// };
+
+// console.log(removeElement([3,2,2,3], 3))
+
+
+// _________________________________________________
+// 1556. Thousand Separator 
+
+const thousandSeparator = n => {
+    n = n.toString()
+    let value = 0
+    let x = []
+    
+    for (let i = n.length - 1; i >= 0 ; i--) {
+        if (value > 0 && value % 3 === 0) {
+            x.push('.')
+            x.push(n[i])
+            value++
+        } else {
+            x.push(n[i])
+            value++
         }
     }
-    return nums.length;
+    return x.reverse().join('')
 };
 
-console.log(removeElement([3,2,2,3], 3))
+console.log(thousandSeparator(1234567890));
