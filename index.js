@@ -619,22 +619,41 @@
 // _________________________________________________
 // 1556. Thousand Separator 
 
-const thousandSeparator = n => {
-    n = n.toString()
-    let value = 0
-    let x = []
+// const thousandSeparator = n => {
+//     n = n.toString()
+//     let value = 0
+//     let x = []
     
-    for (let i = n.length - 1; i >= 0 ; i--) {
-        if (value > 0 && value % 3 === 0) {
-            x.push('.')
-            x.push(n[i])
-            value++
-        } else {
-            x.push(n[i])
-            value++
+//     for (let i = n.length - 1; i >= 0 ; i--) {
+//         if (value > 0 && value % 3 === 0) {
+//             x.push('.')
+//             x.push(n[i])
+//             value++
+//         } else {
+//             x.push(n[i])
+//             value++
+//         }
+//     }
+//     return x.reverse().join('')
+// };
+
+// console.log(thousandSeparator(1234567890));
+
+
+// _________________________________________________
+// 771. Jewels and Stones
+
+
+const numJewelsInStones = (jewels, stones) => {
+    j = jewels.split('')
+    let counter = 0
+
+    for (let i = 0; i < stones.length; i++) {
+        if (j.includes(stones[i])) {
+            counter++
         }
     }
-    return x.reverse().join('')
+    return counter
 };
 
-console.log(thousandSeparator(1234567890));
+console.log(numJewelsInStones("z", "ZZ"))
