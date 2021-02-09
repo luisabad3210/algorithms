@@ -674,16 +674,46 @@
 // _________________________________________________
 // 1512. Number of Good Pairs
 
-const numIdenticalPairs = (nums) => {
-    let counter = 0
-    for (let i = 0; i < nums.length; i++) {
-        for (let j = 0; j < nums.length; j++) {
-            if (nums[i] == nums[j] && i < j) {
-                counter++
+// const numIdenticalPairs = (nums) => {
+//     let counter = 0
+//     for (let i = 0; i < nums.length; i++) {
+//         for (let j = 0; j < nums.length; j++) {
+//             if (nums[i] == nums[j] && i < j) {
+//                 counter++
+//             }
+//         }
+//     }
+//     return counter
+// };
+
+// console.log(numIdenticalPairs([1,1,1,1]))
+
+// _________________________________________________
+// 1213. Intersection of Three Sorted Arrays
+
+const arraysIntersection = (arr1, arr2, arr3) => {
+    let array = [arr1, arr2, arr3]
+    let hash = {}
+    let output = []
+
+    for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < array[i].length; j++) {
+            if (hash[array[i][j]]) {
+                hash[array[i][j]]++
+            } else {
+                hash[array[i][j]] = 1
             }
         }
     }
-    return counter
+
+    Object.keys(hash).forEach(key => {
+        const count = hash[key];
+        if(count === 3) {
+            output.push(key)
+        }
+    });
+
+    return output
 };
 
-console.log(numIdenticalPairs([1,1,1,1]))
+console.log(arraysIntersection([1,2,3,4,5], [1,2,5,7,9], [1,3,4,5,8]))
