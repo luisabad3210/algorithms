@@ -661,12 +661,29 @@
 // _________________________________________________
 // 760. Find Anagram Mappings
 
-const anagramMappings = (a, b) => {
-    let result = []
-    for (let i = 0; i < a.length; i++) {
-        result.push(b.indexOf(a[i]))
+// const anagramMappings = (a, b) => {
+//     let result = []
+//     for (let i = 0; i < a.length; i++) {
+//         result.push(b.indexOf(a[i]))
+//     }
+//     return result
+// };
+
+// console.log(anagramMappings([12, 28, 46, 32, 50], [50, 12, 32, 46, 28]))
+
+// _________________________________________________
+// 1512. Number of Good Pairs
+
+const numIdenticalPairs = (nums) => {
+    let counter = 0
+    for (let i = 0; i < nums.length; i++) {
+        for (let j = 0; j < nums.length; j++) {
+            if (nums[i] == nums[j] && i < j) {
+                counter++
+            }
+        }
     }
-    return result
+    return counter
 };
 
-console.log(anagramMappings([12, 28, 46, 32, 50], [50, 12, 32, 46, 28]))
+console.log(numIdenticalPairs([1,1,1,1]))
