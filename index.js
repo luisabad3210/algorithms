@@ -644,16 +644,29 @@
 // 771. Jewels and Stones
 
 
-const numJewelsInStones = (jewels, stones) => {
-    j = jewels.split('')
-    let counter = 0
+// const numJewelsInStones = (jewels, stones) => {
+//     j = jewels.split('')
+//     let counter = 0
 
-    for (let i = 0; i < stones.length; i++) {
-        if (j.includes(stones[i])) {
-            counter++
-        }
+//     for (let i = 0; i < stones.length; i++) {
+//         if (j.includes(stones[i])) {
+//             counter++
+//         }
+//     }
+//     return counter
+// };
+
+// console.log(numJewelsInStones("z", "ZZ"));
+
+// _________________________________________________
+// 760. Find Anagram Mappings
+
+const anagramMappings = (a, b) => {
+    let result = []
+    for (let i = 0; i < a.length; i++) {
+        result.push(b.indexOf(a[i]))
     }
-    return counter
+    return result
 };
 
-console.log(numJewelsInStones("z", "ZZ"))
+console.log(anagramMappings([12, 28, 46, 32, 50], [50, 12, 32, 46, 28]))
