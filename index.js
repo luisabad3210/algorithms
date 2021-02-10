@@ -691,29 +691,56 @@
 // _________________________________________________
 // 1213. Intersection of Three Sorted Arrays
 
-const arraysIntersection = (arr1, arr2, arr3) => {
-    let array = [arr1, arr2, arr3]
-    let hash = {}
-    let output = []
+// const arraysIntersection = (arr1, arr2, arr3) => {
+//     let array = [arr1, arr2, arr3]
+//     let hash = {}
+//     let output = []
 
-    for (let i = 0; i < array.length; i++) {
-        for (let j = 0; j < array[i].length; j++) {
-            if (hash[array[i][j]]) {
-                hash[array[i][j]]++
-            } else {
-                hash[array[i][j]] = 1
-            }
+//     for (let i = 0; i < array.length; i++) {
+//         for (let j = 0; j < array[i].length; j++) {
+//             if (hash[array[i][j]]) {
+//                 hash[array[i][j]]++
+//             } else {
+//                 hash[array[i][j]] = 1
+//             }
+//         }
+//     }
+
+//     Object.keys(hash).forEach(key => {
+//         const count = hash[key];
+//         if(count === 3) {
+//             output.push(key)
+//         }
+//     });
+
+//     return output
+// };
+
+// console.log(arraysIntersection([1,2,3,4,5], [1,2,5,7,9], [1,3,4,5,8]))
+
+
+// _________________________________________________
+// 1748. Sum of Unique Elements
+
+const sumOfUnique = nums => {
+    let hash = {}
+    let sum = 0
+
+    for (let i = 0; i < nums.length; i++) {
+        if (hash[nums[i]]) {
+            hash[nums[i]]++
+        } else {
+            hash[nums[i]] = 1
         }
     }
-
-    Object.keys(hash).forEach(key => {
-        const count = hash[key];
-        if(count === 3) {
-            output.push(key)
+    
+    Object.keys(hash).forEach((x)=>{
+        if (hash[x] === 1) {
+            sum += Number(x)
         }
-    });
+    })
 
-    return output
+    return sum
 };
 
-console.log(arraysIntersection([1,2,3,4,5], [1,2,5,7,9], [1,3,4,5,8]))
+console.log(sumOfUnique([1,2,3,2]))
