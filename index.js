@@ -722,25 +722,49 @@
 // _________________________________________________
 // 1748. Sum of Unique Elements
 
-const sumOfUnique = nums => {
-    let hash = {}
-    let sum = 0
+// const sumOfUnique = nums => {
+//     let hash = {}
+//     let sum = 0
 
-    for (let i = 0; i < nums.length; i++) {
-        if (hash[nums[i]]) {
-            hash[nums[i]]++
+//     for (let i = 0; i < nums.length; i++) {
+//         if (hash[nums[i]]) {
+//             hash[nums[i]]++
+//         } else {
+//             hash[nums[i]] = 1
+//         }
+//     }
+    
+//     Object.keys(hash).forEach((x)=>{
+//         if (hash[x] === 1) {
+//             sum += Number(x)
+//         }
+//     })
+
+//     return sum
+// };
+
+// console.log(sumOfUnique([1,2,3,2]))
+
+
+// _________________________________________________
+// 961. N-Repeated Element in Size 2N Array
+
+const repeatedNTimes = a => {
+    let hash = {}
+    for (let i = 0; i < a.length; i++) {
+        if (hash[a[i]]) {
+            hash[a[i]]++
         } else {
-            hash[nums[i]] = 1
+            hash[a[i]] = 1
         }
     }
-    
+    let answer = ''
     Object.keys(hash).forEach((x)=>{
-        if (hash[x] === 1) {
-            sum += Number(x)
+        if (hash[x] > 1) {
+            answer += x
         }
     })
-
-    return sum
+    return answer
 };
 
-console.log(sumOfUnique([1,2,3,2]))
+console.log(repeatedNTimes([5,1,5,2,5,3,5,4]))
