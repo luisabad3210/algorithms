@@ -749,22 +749,62 @@
 // _________________________________________________
 // 961. N-Repeated Element in Size 2N Array
 
-const repeatedNTimes = a => {
-    let hash = {}
-    for (let i = 0; i < a.length; i++) {
-        if (hash[a[i]]) {
-            hash[a[i]]++
-        } else {
-            hash[a[i]] = 1
+// const repeatedNTimes = a => {
+//     let hash = {}
+//     for (let i = 0; i < a.length; i++) {
+//         if (hash[a[i]]) {
+//             hash[a[i]]++
+//         } else {
+//             hash[a[i]] = 1
+//         }
+//     }
+//     let answer = ''
+//     Object.keys(hash).forEach((x)=>{
+//         if (hash[x] > 1) {
+//             answer += x
+//         }
+//     })
+//     return answer
+// };
+
+// console.log(repeatedNTimes([5,1,5,2,5,3,5,4]))
+
+
+// _________________________________________________
+// 1160. Find Words That Can Be Formed by Characters
+
+const countCharacters = (words, chars) => {
+    let count = 0
+    
+    const makeHash = (word) => {
+        let hash = {}
+
+        for (let i = 0; i < word.length; i++) {
+            hash[word[i]] ? hash[word[i]]++ : hash[word[i]] = 1
+        }
+
+        return hash
+    }
+
+    let hash = makeHash(chars)
+
+    for (let i = 0; i < words.length; i++) {
+        let boolean = true
+
+        let temp = makeHash(words[i])
+        for (let key in temp) {
+            if (!hash[key] || hash[key] < temp[key]) {
+                boolean = false
+            }
+        }
+
+        if (boolean === true) {
+            count += words[i].length
         }
     }
-    let answer = ''
-    Object.keys(hash).forEach((x)=>{
-        if (hash[x] > 1) {
-            answer += x
-        }
-    })
-    return answer
+
+    return count
+
 };
 
-console.log(repeatedNTimes([5,1,5,2,5,3,5,4]))
+console.log(countCharacters(["hello","world","leetcode"], "welldonehoneyr"))
