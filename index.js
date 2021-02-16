@@ -773,38 +773,62 @@
 // _________________________________________________
 // 1160. Find Words That Can Be Formed by Characters
 
-const countCharacters = (words, chars) => {
-    let count = 0
+// const countCharacters = (words, chars) => {
+//     let count = 0
     
-    const makeHash = (word) => {
-        let hash = {}
+//     const makeHash = (word) => {
+//         let hash = {}
 
-        for (let i = 0; i < word.length; i++) {
-            hash[word[i]] ? hash[word[i]]++ : hash[word[i]] = 1
+//         for (let i = 0; i < word.length; i++) {
+//             hash[word[i]] ? hash[word[i]]++ : hash[word[i]] = 1
+//         }
+
+//         return hash
+//     }
+
+//     let hash = makeHash(chars)
+
+//     for (let i = 0; i < words.length; i++) {
+//         let boolean = true
+
+//         let temp = makeHash(words[i])
+//         for (let key in temp) {
+//             if (!hash[key] || hash[key] < temp[key]) {
+//                 boolean = false
+//             }
+//         }
+
+//         if (boolean === true) {
+//             count += words[i].length
+//         }
+//     }
+
+//     return count
+
+// };
+
+// console.log(countCharacters(["hello","world","leetcode"], "welldonehoneyr"))
+
+
+// _________________________________________________
+// 136. Single Number
+
+
+const singleNumber = nums => { 
+
+    let hash = {}
+    let result = ''
+    for (let i = 0; i < nums.length; i++) {
+        if (hash[nums[i]]) {
+            hash[nums[i]]++ 
+        } else {
+            hash[nums[i]] = 1
         }
-
-        return hash
     }
+    Object.keys(hash).forEach(element => {
+        hash[element] === 1 ? result+=element : null
+    });
+    return result
+}
 
-    let hash = makeHash(chars)
-
-    for (let i = 0; i < words.length; i++) {
-        let boolean = true
-
-        let temp = makeHash(words[i])
-        for (let key in temp) {
-            if (!hash[key] || hash[key] < temp[key]) {
-                boolean = false
-            }
-        }
-
-        if (boolean === true) {
-            count += words[i].length
-        }
-    }
-
-    return count
-
-};
-
-console.log(countCharacters(["hello","world","leetcode"], "welldonehoneyr"))
+console.log(singleNumber([1]))
