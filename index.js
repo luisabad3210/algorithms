@@ -814,21 +814,42 @@
 // 136. Single Number
 
 
-const singleNumber = nums => { 
+// const singleNumber = nums => { 
 
+//     let hash = {}
+//     let result = ''
+//     for (let i = 0; i < nums.length; i++) {
+//         if (hash[nums[i]]) {
+//             hash[nums[i]]++ 
+//         } else {
+//             hash[nums[i]] = 1
+//         }
+//     }
+//     Object.keys(hash).forEach(element => {
+//         hash[element] === 1 ? result+=element : null
+//     });
+//     return result
+// }
+
+// console.log(singleNumber([1]))
+
+
+// _________________________________________________
+// 1133. Largest Unique Number
+
+
+const largestUniqueNumber = a => {
+    
     let hash = {}
-    let result = ''
-    for (let i = 0; i < nums.length; i++) {
-        if (hash[nums[i]]) {
-            hash[nums[i]]++ 
-        } else {
-            hash[nums[i]] = 1
-        }
+    let result = []
+    for (let i = 0; i < a.length; i++) {
+        hash[a[i]] ? hash[a[i]]++ : hash[a[i]] = 1;
     }
-    Object.keys(hash).forEach(element => {
-        hash[element] === 1 ? result+=element : null
-    });
-    return result
-}
 
-console.log(singleNumber([1]))
+    Object.keys(hash).forEach(i => {
+        hash[i] === 1 ? result.push(Number(i)) : result.push(-1)
+    })
+    return Math.max.apply(Math, result)
+};
+
+console.log(largestUniqueNumber([9,9,8,8]))
