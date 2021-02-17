@@ -838,18 +838,46 @@
 // 1133. Largest Unique Number
 
 
-const largestUniqueNumber = a => {
+// const largestUniqueNumber = a => {
     
-    let hash = {}
-    let result = []
-    for (let i = 0; i < a.length; i++) {
-        hash[a[i]] ? hash[a[i]]++ : hash[a[i]] = 1;
-    }
+//     let hash = {}
+//     let result = []
+//     for (let i = 0; i < a.length; i++) {
+//         hash[a[i]] ? hash[a[i]]++ : hash[a[i]] = 1;
+//     }
 
-    Object.keys(hash).forEach(i => {
-        hash[i] === 1 ? result.push(Number(i)) : result.push(-1)
-    })
-    return Math.max.apply(Math, result)
+//     Object.keys(hash).forEach(i => {
+//         hash[i] === 1 ? result.push(Number(i)) : result.push(-1)
+//     })
+//     return Math.max.apply(Math, result)
+// };
+
+// console.log(largestUniqueNumber([9,9,8,8]))
+
+
+// _________________________________________________
+// 266. Palindrome Permutation
+
+var canPermutePalindrome = function(s) {
+    if(s===null)return true;
+    dict={};
+    for(var i=0;i<s.length;i++){
+        if(dict[s.charAt(i)]!==undefined && dict[s.charAt(i)]!==0){
+            var temp=dict[s.charAt(i)];
+            dict[s.charAt(i)]=temp-1;
+        }
+        else if(dict[s.charAt(i)]===undefined||dict[s.charAt(i)]===0) dict[s.charAt(i)]=1;
+    }
+    // console.log(dict);
+    var count=0;
+    for(var j in dict){
+        if (dict[j]===1){
+            count++;
+        }
+    }
+    // console.log(count);
+    if(count===0||count===1)return true;
+    return false;
 };
 
-console.log(largestUniqueNumber([9,9,8,8]))
+console.log(canPermutePalindrome("abbbb"));
