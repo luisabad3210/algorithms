@@ -858,26 +858,93 @@
 // _________________________________________________
 // 266. Palindrome Permutation
 
-var canPermutePalindrome = function(s) {
-    if(s===null)return true;
-    dict={};
-    for(var i=0;i<s.length;i++){
-        if(dict[s.charAt(i)]!==undefined && dict[s.charAt(i)]!==0){
-            var temp=dict[s.charAt(i)];
-            dict[s.charAt(i)]=temp-1;
+// var canPermutePalindrome = function(s) {
+//     if(s===null)return true;
+//     dict={};
+//     for(var i=0;i<s.length;i++){
+//         if(dict[s.charAt(i)]!==undefined && dict[s.charAt(i)]!==0){
+//             var temp=dict[s.charAt(i)];
+//             dict[s.charAt(i)]=temp-1;
+//         }
+//         else if(dict[s.charAt(i)]===undefined||dict[s.charAt(i)]===0) dict[s.charAt(i)]=1;
+//     }
+//     // console.log(dict);
+//     var count=0;
+//     for(var j in dict){
+//         if (dict[j]===1){
+//             count++;
+//         }
+//     }
+//     // console.log(count);
+//     if(count===0||count===1)return true;
+//     return false;
+// };
+
+// console.log(canPermutePalindrome("abbbb"));
+
+
+// _________________________________________________
+// 500. Keyboard Row
+
+// const findWords = words => {
+    
+//     const keyboardMatches = (word) => {
+        
+//         let keyboard = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm']
+//         word = word.split('')
+
+//         for (let i = 0; i < keyboard.length; i++) {
+//             let isMatching = false
+
+//             for (let j = 0; j < keyboard[i]; j++) {
+//                 if (!word.includes(keyboard[i][j])) {
+//                     keyboard[i]++
+//                 } else {
+//                     isMatching = true
+//                 }
+//             }
+
+            
+//         }
+//     }
+
+//     for (let i = 0; i < words.length; i++) {
+//         if (keyboardMatches(words[i])) {
+
+//         }
+//     }
+    
+// };
+
+// console.log(findWords(["Hello","Alaska","Dad","Peace"]))
+
+
+// _________________________________________________
+// 242. Valid Anagram
+
+const isAnagram = (s, t) => {
+    
+    if (s.length !== t.length) {return false}
+
+    let hash1 = {}, hash2 = {}
+    
+    let helper = (hash, str) => {
+        for (let i = 0; i < str.length; i++){
+            !hash[str[i]] ? (hash[str[i]] = 1 ) : hash[str[i]]++
         }
-        else if(dict[s.charAt(i)]===undefined||dict[s.charAt(i)]===0) dict[s.charAt(i)]=1;
+        return hash
     }
-    // console.log(dict);
-    var count=0;
-    for(var j in dict){
-        if (dict[j]===1){
-            count++;
+    
+    hash1 = helper(hash1, s)
+    hash2 = helper(hash2, t)
+    
+    for (let i = 0; i < t.length; i++){
+        if (hash1[t[i]] !== hash2[t[i]]){
+            return false
         }
     }
-    // console.log(count);
-    if(count===0||count===1)return true;
-    return false;
+
+    return true
 };
 
-console.log(canPermutePalindrome("abbbb"));
+console.log(isAnagram("aa", "bb"))
