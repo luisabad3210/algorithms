@@ -922,29 +922,51 @@
 // _________________________________________________
 // 242. Valid Anagram
 
-const isAnagram = (s, t) => {
+// const isAnagram = (s, t) => {
     
-    if (s.length !== t.length) {return false}
+//     if (s.length !== t.length) {return false}
 
-    let hash1 = {}, hash2 = {}
+//     let hash1 = {}, hash2 = {}
     
-    let helper = (hash, str) => {
-        for (let i = 0; i < str.length; i++){
-            !hash[str[i]] ? (hash[str[i]] = 1 ) : hash[str[i]]++
-        }
-        return hash
-    }
+//     let helper = (hash, str) => {
+//         for (let i = 0; i < str.length; i++){
+//             !hash[str[i]] ? (hash[str[i]] = 1 ) : hash[str[i]]++
+//         }
+//         return hash
+//     }
     
-    hash1 = helper(hash1, s)
-    hash2 = helper(hash2, t)
+//     hash1 = helper(hash1, s)
+//     hash2 = helper(hash2, t)
     
-    for (let i = 0; i < t.length; i++){
-        if (hash1[t[i]] !== hash2[t[i]]){
-            return false
-        }
-    }
+//     for (let i = 0; i < t.length; i++){
+//         if (hash1[t[i]] !== hash2[t[i]]){
+//             return false
+//         }
+//     }
 
-    return true
+//     return true
+// };
+
+// console.log(isAnagram("aa", "bb"))
+
+
+// _________________________________________________
+// 884. Uncommon Words from Two Sentences
+
+const uncommonFromSentences = (A, B) => {
+    A = A.split(' ')
+    B = B.split(' ')
+    let result = []
+
+    let hash = {}
+
+    for (let i in A) {hash[A[i]] ? hash[A[i]]++ : hash[A[i]] = 1}
+
+    for (let i in B) {hash[B[i]] ? hash[B[i]]++ : hash[B[i]] = 1}
+
+    Object.keys(hash).forEach(x=> {hash[x] === 1 ? result.push(x) : null})
+
+    return result
 };
 
-console.log(isAnagram("aa", "bb"))
+console.log(uncommonFromSentences("this apple is sweet", "this apple is sour"))
