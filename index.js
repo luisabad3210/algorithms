@@ -953,20 +953,38 @@
 // _________________________________________________
 // 884. Uncommon Words from Two Sentences
 
-const uncommonFromSentences = (A, B) => {
-    A = A.split(' ')
-    B = B.split(' ')
-    let result = []
+// const uncommonFromSentences = (A, B) => {
+//     A = A.split(' ')
+//     B = B.split(' ')
+//     let result = []
 
-    let hash = {}
+//     let hash = {}
 
-    for (let i in A) {hash[A[i]] ? hash[A[i]]++ : hash[A[i]] = 1}
+//     for (let i in A) {hash[A[i]] ? hash[A[i]]++ : hash[A[i]] = 1}
 
-    for (let i in B) {hash[B[i]] ? hash[B[i]]++ : hash[B[i]] = 1}
+//     for (let i in B) {hash[B[i]] ? hash[B[i]]++ : hash[B[i]] = 1}
 
-    Object.keys(hash).forEach(x=> {hash[x] === 1 ? result.push(x) : null})
+//     Object.keys(hash).forEach(x=> {hash[x] === 1 ? result.push(x) : null})
 
-    return result
+//     return result
+// };
+
+// console.log(uncommonFromSentences("this apple is sweet", "this apple is sour"))
+
+
+// _________________________________________________
+// 389. Find the Difference
+
+var findTheDifference = function(s, t) {
+    var a=0, b=0;
+    var charCode, i=0;
+    while(s[i]){
+        a^=s.charCodeAt(i).toString(2);
+        b^=t.charCodeAt(i).toString(2);
+        i++;
+    }
+    b^=t.charCodeAt(i).toString(2);
+    charCode = parseInt(a^b,2);
+    return String.fromCharCode(charCode);
 };
 
-console.log(uncommonFromSentences("this apple is sweet", "this apple is sour"))
