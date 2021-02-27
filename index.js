@@ -975,16 +975,31 @@
 // _________________________________________________
 // 389. Find the Difference
 
-var findTheDifference = function(s, t) {
-    var a=0, b=0;
-    var charCode, i=0;
-    while(s[i]){
-        a^=s.charCodeAt(i).toString(2);
-        b^=t.charCodeAt(i).toString(2);
-        i++;
-    }
-    b^=t.charCodeAt(i).toString(2);
-    charCode = parseInt(a^b,2);
-    return String.fromCharCode(charCode);
-};
+// var findTheDifference = function(s, t) {
+//     var a=0, b=0;
+//     var charCode, i=0;
+//     while(s[i]){
+//         a^=s.charCodeAt(i).toString(2);
+//         b^=t.charCodeAt(i).toString(2);
+//         i++;
+//     }
+//     b^=t.charCodeAt(i).toString(2);
+//     charCode = parseInt(a^b,2);
+//     return String.fromCharCode(charCode);
+// };
 
+
+// _________________________________________________
+// 1331. Rank Transform of an Array
+
+var arrayRankTransform = function(arr) {
+    let clone = [...arr];
+    let hash = {};
+    let rank = 1;
+    clone.sort((a,b)=>a-b).map((a,b)=>{
+        if (!hash[a]) {
+            hash[a] = rank++;
+        };
+    });
+    return arr.map((a)=>hash[a]);
+};
