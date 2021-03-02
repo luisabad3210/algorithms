@@ -1003,3 +1003,30 @@ var arrayRankTransform = function(arr) {
     });
     return arr.map((a)=>hash[a]);
 };
+
+// _________________________________________________
+// 690. Employee Importance
+
+
+var GetImportance = function(emp, id) {
+    let getE = (id) => {
+        let e;
+        for(e of emp) {
+            if(e.id == id)
+                break;
+        }
+        return e;
+    }
+    let getImportance = (e) => {
+        let subimp = 0;
+        if(e.subordinates.length > 0) {
+            for(let s of e.subordinates) {
+                subimp += getImportance(getE(s))
+            }
+        }
+        return e.importance + subimp;
+    }
+    let e = getE(id);
+    let imp = getImportance(e);
+    return imp;
+};
