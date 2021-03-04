@@ -992,41 +992,69 @@
 // _________________________________________________
 // 1331. Rank Transform of an Array
 
-var arrayRankTransform = function(arr) {
-    let clone = [...arr];
-    let hash = {};
-    let rank = 1;
-    clone.sort((a,b)=>a-b).map((a,b)=>{
-        if (!hash[a]) {
-            hash[a] = rank++;
-        };
-    });
-    return arr.map((a)=>hash[a]);
-};
+// var arrayRankTransform = function(arr) {
+//     let clone = [...arr];
+//     let hash = {};
+//     let rank = 1;
+//     clone.sort((a,b)=>a-b).map((a,b)=>{
+//         if (!hash[a]) {
+//             hash[a] = rank++;
+//         };
+//     });
+//     return arr.map((a)=>hash[a]);
+// };
+
+// // _________________________________________________
+// // 690. Employee Importance
+
+
+// var GetImportance = function(emp, id) {
+//     let getE = (id) => {
+//         let e;
+//         for(e of emp) {
+//             if(e.id == id)
+//                 break;
+//         }
+//         return e;
+//     }
+//     let getImportance = (e) => {
+//         let subimp = 0;
+//         if(e.subordinates.length > 0) {
+//             for(let s of e.subordinates) {
+//                 subimp += getImportance(getE(s))
+//             }
+//         }
+//         return e.importance + subimp;
+//     }
+//     let e = getE(id);
+//     let imp = getImportance(e);
+//     return imp;
+// };
 
 // _________________________________________________
-// 690. Employee Importance
+// 1207. Unique Number of Occurrences
 
+const uniqueOccurrences = arr => { 
+    let hash = {}
+    let answer = true
+    let array = []
 
-var GetImportance = function(emp, id) {
-    let getE = (id) => {
-        let e;
-        for(e of emp) {
-            if(e.id == id)
-                break;
-        }
-        return e;
+    for (let i = 0; i < arr.length; i++) {
+        hash[arr[i]] ? hash[arr[i]]++ : hash[arr[i]] = 1
     }
-    let getImportance = (e) => {
-        let subimp = 0;
-        if(e.subordinates.length > 0) {
-            for(let s of e.subordinates) {
-                subimp += getImportance(getE(s))
-            }
+    
+    Object.keys(hash).forEach(element => {
+        let current = hash[element]
+
+        if (array.includes(current)) {
+            answer = false
+        } else {
+            array.push(current)
         }
-        return e.importance + subimp;
-    }
-    let e = getE(id);
-    let imp = getImportance(e);
-    return imp;
-};
+    });
+
+    // console.log(answer)
+    return answer
+}
+
+console.log(uniqueOccurrences([3,5,-2,-3,-6,-6]))
